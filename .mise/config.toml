@@ -20,8 +20,9 @@ run = ["cargo clippy", "uv run --group lint ruff check .", "uv run --group lint 
 
 [tasks.publish-pypi]
 description = "Publish to PyPI"
-env = { MATURIN_PYPI_TOKEN = "{{env.MATURIN_PYPI_TOKEN}}" }
-run = "maturin publish"
+depends = ["build"]
+env = { UV_PUBLISH_TOKEN = "{{env.UV_PUBLISH_TOKEN}}" }
+run = "uv publish target/wheels/*"
 
 [tasks.publish-crates]
 description = "Publish to crates.io"

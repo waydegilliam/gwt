@@ -4,7 +4,7 @@ run = ["uv sync --all-groups", "uv run maturin develop"]
 
 [tasks.build]
 description = "Build release wheel with maturin"
-run = "maturin build --release"
+run = ["rm -rf target/wheels/", "maturin build --release"]
 
 [tasks.build-dev]
 description = "Build debug wheel with maturin"
